@@ -33,18 +33,23 @@ button {
   margin-right: 10px;
 }
 
-/*=======================================================*/
-input[type="number"] {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  width: 60px;
-  outline: none;
-  visibility: collapse;
+/*===============================================================================*/
+/*modal button*/
+/*===============================================================================*/
+
+#modal-overlay {
+  position: fixed; /* Stays in place even if you scroll */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Higher than anything else on the page */
 }
 
-input[type="number"]::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+.hidden {
+  display: none !important; /* Forces the element to disappear */
 }

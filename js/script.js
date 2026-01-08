@@ -79,9 +79,11 @@ resetBtn.addEventListener('click',() => {
      startBtn.textContent='start';
  });
 
+//===============================================================================
+                            //different modes logic
+//===============================================================================
 
-
-function modeswitcher(typashii) {
+function modeSwitcher(typashii) {
    let moda=modes[typashii]
 
     clearInterval(timerId);
@@ -94,7 +96,15 @@ function modeswitcher(typashii) {
     updateDisplay();
 }
 
-shortBrk.addEventListener('click', () => modeswitcher('SHORT'));
-longBrk.addEventListener('click', () => modeswitcher('LONG'));
+shortBrk.addEventListener('click', () => modeSwitcher('SHORT'));
+longBrk.addEventListener('click', () => modeSwitcher('LONG'));
 
-Focusbtn.addEventListener('click',() =>modeswitcher('WORK'));
+Focusbtn.addEventListener('click',() =>modeSwitcher('WORK'));
+
+
+
+//===============================================================================
+                            //customize button
+//===============================================================================
+
+

@@ -8,12 +8,11 @@
 <body>
 
 <div class="timer-container">
+
   <div class="mode">
     <button id="short-break" type="button">short-break</button>
     <button id="long-break" type="button">long-break</button>
     <button id="custom" type="button">customize</button>
-<!--    <input type="number" id="custom-minutes" placeholder="Mins" min="1" max="60">-->
-
   </div>
   <h1 id="timer">25:00</h1>
 
@@ -26,12 +25,22 @@
 
   </div>
 
-
-
-
+</div>
 
 </div>
 
+
+<div id="modal-overlay" class="hidden">
+  <div class="modal-content">
+    <h3>Custom Session</h3>
+    <p>How many minutes would you like to focus?</p>
+    <input type="number" id="custom-minutes" placeholder="e.g. 45" min="1" max="120">
+    <div class="modal-buttons">
+      <button id="set-custom" type="button">Set Time</button>
+      <button id="close-modal" type="button">Cancel</button>
+    </div>
+  </div>
+</div>
 
 
 
