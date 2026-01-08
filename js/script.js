@@ -6,12 +6,20 @@ const resetBtn = document.getElementById('reset');
 const startBtn = document.getElementById('start');
 
 const alarm =document.getElementById('alarm');
+
+//===============================================================================
+                                //clock logic
+//===============================================================================
+
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     // makes 25:9 look like 25:09
         timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
+//===============================================================================
+                                // start button
+//===============================================================================
 
 startBtn.addEventListener('click', () => {
     if (timerId === null) {
@@ -30,10 +38,15 @@ startBtn.addEventListener('click', () => {
          startBtn.textContent='start'
     }
 });
- resetBtn.addEventListener('click',() => {
+//===============================================================================
+                                //rest button
+//===============================================================================
+
+resetBtn.addEventListener('click',() => {
      clearInterval(timerId);
      timeLeft = 25 * 60; // 25 minutes in seconds
      timerId = null;
      updateDisplay();
      startBtn.textContent='start';
  });
+
