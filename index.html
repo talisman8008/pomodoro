@@ -6,11 +6,17 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <div class="timer-container">
+  <div class="mode">
+    <button id="short-break" type="button">short-break</button>
+    <button id="long-break" type="button">long-break</button>
+    <button id="custom" type="button">customize</button>
+  </div>
   <h1 id="timer">25:00</h1>
   <div class="controls">
-    <button id="start" style="margin-right: 20px">Start</button>
-    <button id="reset">Reset</button>
+    <button id="start" type="button">Start</button>
+    <button id="reset" type="button">Reset</button>
   </div>
 </div>
 
@@ -23,9 +29,8 @@
 
 
 
-
-<audio id="alarm-sound">
-  <source src="your-sound-file.mp3" type="audio/mpeg">
+<audio id="alarm">
+  <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock_short.ogg" type="audio/mpeg">
 </audio>
 
 <script src="script.js"></script>
