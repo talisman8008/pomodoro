@@ -1,0 +1,35 @@
+/* style.css */
+body {
+  background-color: #121212; /* Dark mode is always more aesthetic */
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+#timer {
+  font-size: 8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+button {
+  background: #333;
+  color: white;
+  border: 1px solid honeydew;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 15px;
+}
+
+.controls{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 10px;
+}
+
