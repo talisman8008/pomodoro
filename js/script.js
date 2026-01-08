@@ -1,15 +1,31 @@
-let timeLeft = 1; // 25 minutes in seconds
+let timeLeft = 25*60; // 25 minutes in seconds
 let timerId = null;
 
-
-
+const modes = {
+    WORK: {
+        time: 25 * 60,
+       color: "#2C3E50", // Sleek dark blue
+       // sound: "work-end.mp3"
+    },
+    SHORT: {
+        time: 5 * 60,
+      color: "#27AE60", // Calm green
+        //sound: "break-end.mp3"
+    },
+    LONG: {
+        time: 15 * 60,
+     color: "#2980B9", // Deep blue
+        //sound: "long-break-end.mp3"
+    }
+};
 
 const timerDisplay = document.getElementById('timer');
 const resetBtn = document.getElementById('reset');
 const startBtn = document.getElementById('start');
-const shortBrk = document.getElementById('start');
-const longBrk = document.getElementById('start');
-const customtBrk = document.getElementById('start');
+const shortBrk = document.getElementById('short-break');
+const longBrk = document.getElementById('long-break');
+const customtBrk = document.getElementById('custom');
+const Focusbtn = document.getElementById('Focus');
 
 const alarm =document.getElementById('alarm');
 
@@ -63,16 +79,22 @@ resetBtn.addEventListener('click',() => {
      startBtn.textContent='start';
  });
 
-// resetBtn.addEventListener('click', () => {
-//     clearInterval(timerId);
-//     timerId = null;           // ✅ always reset state
-//     timeLeft = 25 * 60;
-//
-//     alarm.pause();
-//     alarm.currentTime = 0;
-//
-//     updateDisplay();
-//     startBtn.textContent = 'start';
-// });
 
 
+function modeswitcher(typashii) {
+   let moda=modes[typashii]
+
+    clearInterval(timerId);
+    timerId=null;
+    startBtn.textContent = 'Start';
+
+    timeLeft = moda.time;
+    document.body.style.backgroundColor = moda.color;
+
+    updateDisplay();
+}
+
+shortBrk.addEventListener('click', () => modeswitcher('SHORT'));
+longBrk.addEventListener('click', () => modeswitcher('LONG'));
+
+Focusbtn.addEventListener('click',() =>modeswitcher('WORK'));

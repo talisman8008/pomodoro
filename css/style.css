@@ -26,10 +26,25 @@ button {
   margin: 15px;
 }
 
-.controls{
+.controls, #timer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin-right: 10px;
 }
 
+/*=======================================================*/
+input[type="number"] {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 60px;
+  outline: none;
+  visibility: collapse;
+}
+
+input[type="number"]::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
