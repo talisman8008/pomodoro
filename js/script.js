@@ -34,10 +34,11 @@ const alarm =document.getElementById('alarm');
 //===============================================================================
 
 function updateDisplay() {
+    const hours= math.floor(timeLeft/3600);
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     // makes 25:9 look like 25:09
-        timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        timerDisplay.textContent = `:${minutes < 10 ? '0':''}${minutes} :${seconds < 10 ? '0' : ''}${seconds}`;
 }
 //===============================================================================
                                 // start button
@@ -107,4 +108,46 @@ Focusbtn.addEventListener('click',() =>modeSwitcher('WORK'));
                             //customize button
 //===============================================================================
 
+// Grab Modal Elements
+const modalOverlay = document.getElementById('modal-overlay');
+const closeModalBtn = document.getElementById('close-modal');
+const setCustomBtn = document.getElementById('set-custom');
+const customMin = document.getElementById('custom-minutes');
+const customSec = document.getElementById('custom-seconds');
+const customHrs = document.getElementById('custom-hours');
 
+// opening modal
+customtBrk.addEventListener('click',() =>{modalOverlay.classList.remove('hidden');});
+
+// closing modal
+closeModalBtn.addEventListener('click',()=>{modalOverlay.classList.add('hidden');});
+
+
+// setting custom time button
+setCustomBtn.addEventListener('click',() => {
+
+const min = parseInt(customMin.value);
+const sec = parseInt(customSec.value);
+// const hrs = parseInt(customHrs.value);
+
+
+if(!isNaN(min) && !isNaN(sec) && min>=0 && sec >=0){
+
+    clearInterval(timerId);//stop any ongoing process
+    timerId=null;//resets the timer
+    startBtn.textContent = 'Start';//resets 'pause' button to 'start'
+
+    //tu confirm if button is workin
+    console.log(`Hours=${hrs}:minutes=${min}:seconds=${sec}`);
+
+    timeLeft=(hrs*3600)+(min*60)+sec; //update time left in seconds
+    console.log(`seconds=${timeLeft}`);
+
+    updateDisplay();//update the timer
+   customHrs.value = '';//input box
+    customMin.value = '';//input box
+    customSec.value = '';//input box
+}else {
+    alert("Please valid time");
+}
+});//func ends
