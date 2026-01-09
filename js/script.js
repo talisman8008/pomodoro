@@ -1,6 +1,6 @@
 let timeLeft = 25*60; // 25 minutes in seconds
 let timerId = null;
-
+let activesession ='WORK';
 const modes = {
     WORK: {
         time: 2*60*60,
@@ -30,7 +30,7 @@ const Focusbtn = document.getElementById('Focus');
 const alarm =document.getElementById('alarm');
 
 //===============================================================================
-                                //clock logic
+                                //Clock Logic
 //===============================================================================
 
 function updateDisplay() {
@@ -42,16 +42,15 @@ function updateDisplay() {
 }
 
 //===============================================================================
-                                // start button
+                                // Start Button
 //===============================================================================
-
 startBtn.addEventListener('click', () => {
     if (timerId === null) {
         startBtn.textContent='pause'
         timerId = setInterval(() => {
             timeLeft--;
             updateDisplay();
-            if (timeLeft === 0) {
+            if (timeLeft <= 0) {
                 clearInterval(timerId);
 
                 alarm.play();
@@ -66,34 +65,33 @@ startBtn.addEventListener('click', () => {
     }
 });
 //===============================================================================
-                                //rest button
+                                //Rest Button
 //===============================================================================
 
 resetBtn.addEventListener('click',() => {
-     clearInterval(timerId);
-     timerId = null;
-     timeLeft = 25 * 60; // time minutes in seconds
+     modeSwitcher(activesession);
 
     alarm.pause();
     alarm.currentTime = 0;
-    console.log("button works")
+
     updateDisplay();
-     startBtn.textContent='start';
+     startBtn.textContent='Start';
  });
 
 //===============================================================================
-                            //different modes logic
+                            //Different Modes Logic
 //===============================================================================
 
 function modeSwitcher(typashii) {
-   let moda=modes[typashii]
+    activesession=typashii;
+    const selectedmode=modes[typashii];
 
     clearInterval(timerId);
     timerId=null;
     startBtn.textContent = 'Start';
 
-    timeLeft = moda.time;
-    document.body.style.backgroundColor = moda.color;
+    timeLeft = selectedmode.time;
+    document.body.style.backgroundColor = selectedmode.color;
 
     updateDisplay();
 }
@@ -106,7 +104,7 @@ Focusbtn.addEventListener('click',() =>modeSwitcher('WORK'));
 
 
 //===============================================================================
-                            //customize button
+                            //Custom-Timer Button
 //===============================================================================
 
 // Grab Modal Elements
@@ -115,7 +113,7 @@ const closeModalBtn = document.getElementById('close-modal');
 const setCustomBtn = document.getElementById('set-custom');
 const customMin = document.getElementById('custom-minutes');
 const customSec = document.getElementById('custom-seconds');
-// const customHrs = document.getElementById('custom-hours');
+const customHrs = document.getElementById('custom-hours');
 
 // opening modal
 customtBrk.addEventListener('click',() =>{modalOverlay.classList.remove('hidden');});
@@ -127,28 +125,27 @@ closeModalBtn.addEventListener('click',()=>{modalOverlay.classList.add('hidden')
 // setting custom time button
 setCustomBtn.addEventListener('click',() => {
 
-const min = parseInt(customMin.value);
-const sec = parseInt(customSec.value);
-// const hrs = parseInt(customHrs.value);
+const min = parseInt(customMin.value) ||0;
+const sec = parseInt(customSec.value)||0;
+const hrs = parseInt(customHrs.value)||0;
 
 
-if(!isNaN(min) && !isNaN(sec) && min>=0 && sec >=0){
+if(!isNaN(min) && !isNaN(sec) && !isNaN(hrs) && hrs>=0 && min>=0 && sec >=0){
 
+    timeLeft=(hrs*3600)+(min*60)+sec; //update time left in seconds
+    if (timeLeft>0){
     clearInterval(timerId);//stop any ongoing process
     timerId=null;//resets the timer
     startBtn.textContent = 'Start';//resets 'pause' button to 'start'
 
-    //tu confirm if button is workin
-    console.log(`Hours=${hrs}:minutes=${min}:seconds=${sec}`);
-
-    timeLeft=(hrs*3600)+(min*60)+sec; //update time left in seconds
-    console.log(`seconds=${timeLeft}`);
-
     updateDisplay();//update the timer
-   // customHrs.value = '';//input box
+    customHrs.value = '';//input box
     customMin.value = '';//input box
     customSec.value = '';//input box
+    modalOverlay.classList.add('hidden');
+
+    }
 }else {
-    alert("Please valid time");
+    alert("Please Enter Valid Time");
 }
 });//func ends
