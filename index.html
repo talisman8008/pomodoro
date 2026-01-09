@@ -6,26 +6,46 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!--===============================-->
+<!--oggggg shitttt -->
+<!--===============================-->
+<!--<div class="timer-container">-->
+<!--  <h1 id="timer">00:00:00</h1>-->
 
-<div class="timer-container">
+<!--    <div class="controls">-->
+<!--      <button id="start" type="button">Start</button>-->
+<!--      <button id="Focus" type="button">Focus</button>-->
+<!--      <button id="reset" type="button">Reset</button>-->
 
-  <div class="mode">
-    <button id="short-break" type="button">short-break</button>
-    <button id="long-break" type="button">long-break</button>
-    <button id="custom" type="button">customize</button>
+<!--  </div>-->
+
+<!--  <div class="mode">-->
+<!--    <button id="short-break" type="button">short-break</button>-->
+<!--    <button id="long-break" type="button">long-break</button>-->
+<!--    <button id="custom" type="button">customize</button>-->
+<!--  </div>-->
+
+<!--</div>-->
+
+<div class="main-layout">
+  <div class="timer-display-container">
+    <h1 id="timer">00:25:00</h1>
+    <div class="main-controls">
+      <button id="start">Start</button>
+      <button id="reset">Reset</button>
+    </div>
   </div>
 
-  <h1 id="timer">00:00:00</h1>
-
-    <div class="controls">
-      <button id="start" type="button">Start</button>
-      <button id="Focus" type="button">Focus</button>
-      <button id="reset" type="button">Reset</button>
-
-  </div>
-
+  <footer class="bottom-settings">
+    <div class="mode-buttons">
+      <button id="work-mode">Focus</button>
+      <button id="short-break">Short</button>
+      <button id="long-break">Long</button>
+      <button id="custom">Customize</button>
+    </div>
+    <button id="theme-toggle">Change Theme</button>
+  </footer>
 </div>
-
 
 
 
@@ -33,9 +53,6 @@
   <div class="modal-content">
     <h3>Custom Session</h3>
     <p>How many minutes would you like to focus?</p>
-    <input type="number" id="custom-hours" placeholder="e.g.30" min="0">
-    <input type="number" id="custom-minutes" placeholder="e.g. 45" min="0" max="59" >
-    <input type="number" id="custom-seconds" placeholder="e.g.30" min="0" max="59">
     <div class="modal-buttons">
       <button id="set-custom" type="button">Set Time</button>
       <button id="close-modal" type="button">Cancel</button>

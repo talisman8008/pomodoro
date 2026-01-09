@@ -37,8 +37,11 @@ function updateDisplay() {
     const hours = Math.floor(timeLeft / 3600);
     const minutes = Math.floor((timeLeft % 3600) / 60);
     const seconds = timeLeft % 60;
+
+    const timer=`${hours < 10 ? '0':''}${hours}:${minutes < 10 ? '0':''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     // makes 25:9 look like 25:09
-        timerDisplay.textContent = `${hours < 10 ? '0':''}${hours}:${minutes < 10 ? '0':''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        timerDisplay.textContent = timer;
+    document.title=`(${timer}) Aesthetic Pomodoro `
 }
 
 //===============================================================================
