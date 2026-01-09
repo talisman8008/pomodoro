@@ -3,7 +3,7 @@ let timerId = null;
 
 const modes = {
     WORK: {
-        time: 25 * 60,
+        time: 2*60*60,
        color: "#2C3E50", // Sleek dark blue
        // sound: "work-end.mp3"
     },
@@ -34,12 +34,13 @@ const alarm =document.getElementById('alarm');
 //===============================================================================
 
 function updateDisplay() {
-    const hours= math.floor(timeLeft/3600);
-    const minutes = Math.floor(timeLeft / 60);
+    const hours = Math.floor(timeLeft / 3600);
+    const minutes = Math.floor((timeLeft % 3600) / 60);
     const seconds = timeLeft % 60;
     // makes 25:9 look like 25:09
-        timerDisplay.textContent = `:${minutes < 10 ? '0':''}${minutes} :${seconds < 10 ? '0' : ''}${seconds}`;
+        timerDisplay.textContent = `${hours < 10 ? '0':''}${hours}:${minutes < 10 ? '0':''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
+
 //===============================================================================
                                 // start button
 //===============================================================================
@@ -114,7 +115,7 @@ const closeModalBtn = document.getElementById('close-modal');
 const setCustomBtn = document.getElementById('set-custom');
 const customMin = document.getElementById('custom-minutes');
 const customSec = document.getElementById('custom-seconds');
-const customHrs = document.getElementById('custom-hours');
+// const customHrs = document.getElementById('custom-hours');
 
 // opening modal
 customtBrk.addEventListener('click',() =>{modalOverlay.classList.remove('hidden');});
@@ -144,7 +145,7 @@ if(!isNaN(min) && !isNaN(sec) && min>=0 && sec >=0){
     console.log(`seconds=${timeLeft}`);
 
     updateDisplay();//update the timer
-   customHrs.value = '';//input box
+   // customHrs.value = '';//input box
     customMin.value = '';//input box
     customSec.value = '';//input box
 }else {

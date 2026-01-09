@@ -26,7 +26,7 @@ button {
   margin: 15px;
 }
 
-.controls, #timer {
+.controls, #timer , .mode {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -53,4 +53,8 @@ button {
 .hidden {
   display: none !important; /* Forces the element to disappear */
 
+}
+
+.modal-content h3{
+  text-align: center;
 }
