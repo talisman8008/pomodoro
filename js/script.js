@@ -22,10 +22,7 @@ const modes = {
 const timerDisplay = document.getElementById('timer');
 const resetBtn = document.getElementById('reset');
 const startBtn = document.getElementById('start');
-const shortBrk = document.getElementById('short-break');
-const longBrk = document.getElementById('long-break');
-const customtBrk = document.getElementById('custom-aloo');
-const Focusbtn = document.getElementById('work-mode');
+
 
 const alarm =document.getElementById('alarm');
 
@@ -98,8 +95,15 @@ function modeSwitcher(typashii) {
 
     updateDisplay();
 }
-
-shortBrk.addEventListener('click', () => modeSwitcher('SHORT'));
+const shortBrk = document.getElementById('short-break');
+const longBrk = document.getElementById('long-break');
+const customtBrk = document.getElementById('custom-aloo');
+const Focusbtn = document.getElementById('work-mode');
+shortBrk.addEventListener('click', () => {
+    modeSwitcher('SHORT');
+    console.log("its somehow clicked");
+    shortBrk.classList.add('active');
+});
 longBrk.addEventListener('click', () => modeSwitcher('LONG'));
 
 Focusbtn.addEventListener('click', () => modeSwitcher('WORK'));

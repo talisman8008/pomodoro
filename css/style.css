@@ -85,16 +85,37 @@ body, html {
 /* =========================================
     (FOOTER)
    ========================================= */
-.bottom-settings {
-  padding: 1.5rem 1rem;
+/*.bottom-settings {*/
+/*  padding: 2rem 3rem;*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*}*/
 
+.bottom-settings {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes left, center, and right blocks apart */
   align-items: center;
+  padding: 0px 40px 40px 40px;
+  width: 100%;
 }
-.spacer, #theme-toggle {
-  width: 150px;
+
+.footer-left, .footer-right {
+  flex: 1;
 }
+
+.footer-right {
+  display: flex;
+  justify-content: flex-end; /* Pushes the theme button to the very edge */
+}
+
+
+
+/*.spacer, #theme-toggle {*/
+/*  width: 150px;*/
+/*}*/
+
+
 .mode-buttons {
   display: flex;
   border: rgba(255, 255, 255, 0.14) solid 1px;
@@ -104,29 +125,13 @@ body, html {
   gap: 1rem;
 }
 
-.active{
-  box-shadow: rgb(139 139 139 / 62%) 0px 0px 8px 0px;
-  background-color: var(--fillcolor);
-  border-radius: 20px;
-}
 
-
-#work-mode:hover{
+.active:hover{
   /*background-color: var(--fillcolor);*/
   border-radius: 20px;
+  border: rgba(255, 255, 255, 0.37) solid 1px;
   box-shadow: rgb(139 139 139 / 62%) 0px 0px 8px 0px;
-  transition: ease 0.5s;
-
-}
-#short-break:hover{
-  background-color: var(--fillcolor);
-  border-radius: 20px;
-  transition: ease 0.5s;
-}
-#long-break:hover{
-  background-color: var(--fillcolor);
-  border-radius: 20px;
-  transition: ease 0.5s;
+  /*transition: ease 0.5s;*/
 }
 
 .mode-buttons button, #theme-toggle {
@@ -137,8 +142,12 @@ body, html {
   cursor: pointer;
   padding: 0.5rem 1rem;
   transition: color 0.3s ease;
+  font-size: 1.25rem;
 }
-
+#theme-toggle {
+  border: red solid 1px; !important;
+  border-radius:2px;
+}
 .mode-buttons button:hover, #theme-toggle:hover {
   color: var(--text-main);
 }
