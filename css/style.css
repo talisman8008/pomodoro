@@ -126,7 +126,7 @@ body, html {
 }
 
 
-.active:hover{
+.mode-buttons button:hover{
   /*background-color: var(--fillcolor);*/
   border-radius: 20px;
   border: rgba(255, 255, 255, 0.37) solid 1px;
@@ -134,20 +134,38 @@ body, html {
   /*transition: ease 0.5s;*/
 }
 
-.mode-buttons button, #theme-toggle {
+.mode-buttons button {
   background: transparent;
   border: none;
   color: var(--text-dim);
   font-weight: 500;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  transition: color 0.3s ease;
+  padding: 0.80rem 1rem;
+  transition: all 0.4s ease;
   font-size: 1.25rem;
 }
-#theme-toggle {
-  border: red solid 1px; !important;
-  border-radius:2px;
+
+.active{
+  background-color: var(--fillcolor) !important;
+  border-radius: 20px;
+  border: rgba(255, 255, 255, 0.37) solid 1px !important;
+  box-shadow: rgb(139 139 139 / 62%) 0px 0px 8px 0px;
+  /*transition: ease 0.5s;*/
 }
+
+
+#theme-toggle {
+  background: transparent;
+  border: palevioletred solid 1px;
+  border-radius: 15px;
+  color: var(--text-dim);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.80rem 1rem;
+  transition: color 0.3s ease;
+  font-size: 1.20rem;
+}
+
 .mode-buttons button:hover, #theme-toggle:hover {
   color: var(--text-main);
 }
