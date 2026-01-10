@@ -101,15 +101,33 @@ const customtBrk = document.getElementById('custom-aloo');
 const Focusbtn = document.getElementById('work-mode');
 shortBrk.addEventListener('click', () => {
     modeSwitcher('SHORT');
-    console.log("its somehow clicked");
-    shortBrk.classList.add('active');
+    console.log("Short Session started");
+    activityTracker('short-break');
 });
-longBrk.addEventListener('click', () => modeSwitcher('LONG'));
+longBrk.addEventListener('click', () => {modeSwitcher('LONG');
+    console.log("Short Session started");
+    activityTracker('long-break');
+});
 
-Focusbtn.addEventListener('click', () => modeSwitcher('WORK'));
+Focusbtn.addEventListener('click', () => {
+    modeSwitcher('WORK');
+    console.log("Short Session started");
+    activityTracker('work-mode');
+});
 
+customtBrk.addEventListener('click',()=>activityTracker('custom-aloo'));
 
+// ======================================================
+// Active session
+// ======================================================
+function activityTracker(sessionmode) {
+    const allbtns=document.querySelectorAll('.mode-buttons button');
 
+    allbtns.forEach(btn=>{btn.classList.remove('active');});
+
+    const activebtn= document.getElementById(sessionmode);
+    activebtn.classList.add('active');
+}
 
 //===============================================================================
                             //Custom-Timer Button
@@ -159,3 +177,6 @@ if(!isNaN(min) && !isNaN(sec) && !isNaN(hrs) && hrs>=0 && min>=0 && sec >=0){
     alert("Please Enter Valid Time");
 }
 });//func ends
+
+
+
