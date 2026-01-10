@@ -6,16 +6,20 @@ const modes = {
         time: 2*60*60,
        color: "#2C3E50", // Sleek dark blue
        // sound: "work-end.mp3"
+        bg: 'url("img/work.jpg")'
     },
     SHORT: {
         time: 5 * 60,
       color: "#27AE60", // Calm green
         //sound: "break-end.mp3"
+        bg: 'url("img/break.jpg")'
     },
     LONG: {
         time: 15 * 60,
-     color: "#2980B9", // Deep blue
+        color: "#2980B9", // Deep blue
         //sound: "long-break-end.mp3"
+        bg: 'url("img/short-break.jpg")'
+
     }
 };
 
@@ -92,6 +96,7 @@ function modeSwitcher(typashii) {
 
     timeLeft = selectedmode.time;
     document.body.style.backgroundColor = selectedmode.color;
+    document.body.style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), ${selectedmode.bg})`;
 
     updateDisplay();
 }
