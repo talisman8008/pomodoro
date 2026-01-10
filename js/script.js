@@ -1,4 +1,4 @@
-let timeLeft = 25*60; // 25 minutes in seconds
+let timeLeft = 25*60; //   25 minutes in seconds
 let timerId = null;
 let activesession ='WORK';
 const modes = {
@@ -24,8 +24,8 @@ const resetBtn = document.getElementById('reset');
 const startBtn = document.getElementById('start');
 const shortBrk = document.getElementById('short-break');
 const longBrk = document.getElementById('long-break');
-const customtBrk = document.getElementById('custom');
-const Focusbtn = document.getElementById('Focus');
+const customtBrk = document.getElementById('custom-aloo');
+const Focusbtn = document.getElementById('work-mode');
 
 const alarm =document.getElementById('alarm');
 
@@ -36,7 +36,7 @@ const alarm =document.getElementById('alarm');
 function updateDisplay() {
     const hours = Math.floor(timeLeft / 3600);
     const minutes = Math.floor((timeLeft % 3600) / 60);
-    const seconds = timeLeft % 60;
+    const seconds = timeLeft%60;
 
     const timer=`${hours < 10 ? '0':''}${hours}:${minutes < 10 ? '0':''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     // makes 25:9 look like 25:09
@@ -102,7 +102,8 @@ function modeSwitcher(typashii) {
 shortBrk.addEventListener('click', () => modeSwitcher('SHORT'));
 longBrk.addEventListener('click', () => modeSwitcher('LONG'));
 
-Focusbtn.addEventListener('click',() =>modeSwitcher('WORK'));
+Focusbtn.addEventListener('click', () => modeSwitcher('WORK'));
+
 
 
 
@@ -119,7 +120,9 @@ const customSec = document.getElementById('custom-seconds');
 const customHrs = document.getElementById('custom-hours');
 
 // opening modal
-customtBrk.addEventListener('click',() =>{modalOverlay.classList.remove('hidden');});
+customtBrk.addEventListener('click',() =>{
+    console.log("Custom button clicked!");
+    modalOverlay.classList.remove('hidden');});
 
 // closing modal
 closeModalBtn.addEventListener('click',()=>{modalOverlay.classList.add('hidden');});

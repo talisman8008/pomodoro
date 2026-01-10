@@ -37,22 +37,29 @@
   </div>
 
   <footer class="bottom-settings">
+    <div class="spacer"></div>
     <div class="mode-buttons">
       <button id="work-mode">Focus</button>
       <button id="short-break">Short</button>
       <button id="long-break">Long</button>
-      <button id="custom">Customize</button>
+      <button id="custom-aloo">Customize</button>
     </div>
     <button id="theme-toggle">Change Theme</button>
   </footer>
 </div>
 
-
-
+<!--==============================================-->
+<!--modal dialog box -->
+<!--==============================================-->
 <div id="modal-overlay" class="hidden">
   <div class="modal-content">
     <h3>Custom Session</h3>
     <p>How many minutes would you like to focus?</p>
+    <div class="input-container">
+    <input type="number" id="custom-hours" placeholder="HH" min="0">
+    <input type="number" id="custom-minutes" placeholder="MM" min="0" max="59" >
+    <input type="number" id="custom-seconds" placeholder="SS" min="0" max="59">
+    </div>
     <div class="modal-buttons">
       <button id="set-custom" type="button">Set Time</button>
       <button id="close-modal" type="button">Cancel</button>
