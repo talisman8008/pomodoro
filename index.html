@@ -47,7 +47,17 @@
   </div>
 
     <div class="footer-right">
-      <button id="theme-toggle">Change Theme</button>
+      <div id="theme-menu" class="theme-popup hidden">
+        <p>Select Theme</p>
+        <div class="theme-options">
+          <button class="theme-opt" data-t="dark" style="background: #0a0a0a;"></button>
+          <button class="theme-opt" data-t="cyberpunk" style="background: #2b0057;"></button>
+          <button class="theme-opt" data-t="forest" style="background: #1b3022;"></button>
+          <button class="theme-opt" data-t="cream" style="background: #fdf5e6;"></button>
+        </div>
+      </div>
+
+      <button id="theme-toggle" type="button">Change Theme</button>
     </div>
   </footer>
 </div>
