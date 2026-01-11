@@ -24,7 +24,7 @@ body, html {
   overflow: hidden; /* Prevents scrolling */
 }
 body{
-  background-image: linear-gradient(rgba(0, 0, 0, 12%), rgba(0, 0, 0, 12%)), url('../img/default.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 12%), rgba(0, 0, 0, 12%)), url('C:/Users/Devesh/CLionProjects/Pomodorov1/img/default.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -274,25 +274,7 @@ input::-webkit-inner-spin-button {
 /*==============================================================*/
                         /*Theme */
 /*==============================================================*/
-.footer-right {
-  position: relative; /* Crucial: This anchors the popup to this corner */
-  display: flex;
-  justify-content: flex-end;
-}
 
-.theme-popup {
-  position: absolute;
-  bottom: 70px; /* Adjust this based on your footer height */
-  right: 0;
-  background: var(--glass-bg);
-  backdrop-filter: blur(15px);
-  border: 1px solid var(--glass-border);
-  padding: 15px;
-  border-radius: 15px;
-  width: 180px;
-  z-index: 100;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
 
 .theme-options {
   display: flex;
@@ -312,4 +294,34 @@ input::-webkit-inner-spin-button {
 .theme-opt:hover {
   transform: scale(1.2);
   border-color: var(--text-main);
+}
+
+
+
+.footer-right {
+  position: relative; /* Anchor for the absolute popup */
+}
+
+.theme-popup {
+  position: absolute;
+  bottom: 80px; /* Position it above the footer */
+  right: 0;
+  background: var(--glass-bg, rgba(0,0,0,0.8));
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+/* The "Ghost Element" arrow pointing down to the button */
+.theme-popup::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(255,255,255,0.1);
 }
