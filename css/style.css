@@ -10,7 +10,7 @@
   --accent-color: #38bdf8; /* Sleek Sky Blue */
   --text-main: #ffffff;
   --text-dim: rgba(255, 255, 255, 0.6);
-  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.25);
   --glass-border: rgba(255, 255, 255, 0.1);
   --fillcolor: rgba(220, 220, 220, 0.53)
 }
@@ -24,12 +24,12 @@ body, html {
   overflow: hidden; /* Prevents scrolling */
 }
 body{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/default.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 12%), rgba(0, 0, 0, 12%)), url('../img/default.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  transition: background-image 0.8s ease-in-out;
+  transition: background-image 2s ease-in-out;
   overflow: hidden;
 }
 /* =========================================
@@ -74,7 +74,7 @@ body{
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid var(--glass-border);
+  border: 2px solid var(--glass-border);
 }
 
 #start {
@@ -164,7 +164,7 @@ body{
 
 #theme-toggle {
   background: transparent;
-  border: palevioletred solid 1px;
+  border: var(--glass-border) solid 1px;
   border-radius: 15px;
   color: var(--text-dim);
   font-weight: 500;
@@ -225,11 +225,7 @@ body{
   margin: 25px 0;
 }
 
-.input-container span {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--text-dim);
-}
+
 
 .modal-content input {
   width: 70px;
@@ -275,3 +271,45 @@ input::-webkit-inner-spin-button {
 #set-custom { background: var(--accent-color); color: white; }
 #close-modal { background: #333; color: white; }
 
+/*==============================================================*/
+                        /*Theme */
+/*==============================================================*/
+.footer-right {
+  position: relative; /* Crucial: This anchors the popup to this corner */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.theme-popup {
+  position: absolute;
+  bottom: 70px; /* Adjust this based on your footer height */
+  right: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  padding: 15px;
+  border-radius: 15px;
+  width: 180px;
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.theme-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.theme-opt {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.theme-opt:hover {
+  transform: scale(1.2);
+  border-color: var(--text-main);
+}

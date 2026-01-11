@@ -18,7 +18,7 @@ const modes = {
         time: 15 * 60,
         color: "#2980B9", // Deep blue
         //sound: "long-break-end.mp3"
-        bg: 'url("img/short-break.jpg")'
+        bg: 'url("img/long-break.jpg")'
 
     }
 };
@@ -95,11 +95,12 @@ function modeSwitcher(typashii) {
     startBtn.textContent = 'Start';
 
     timeLeft = selectedmode.time;
-    document.body.style.backgroundColor = selectedmode.color;
-    document.body.style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), ${selectedmode.bg})`;
+    // document.body.style.backgroundColor = selectedmode.color;
+    document.body.style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 12%), rgba(0, 0, 0, 12%)), ${selectedmode.bg}`;
 
     updateDisplay();
 }
+
 const shortBrk = document.getElementById('short-break');
 const longBrk = document.getElementById('long-break');
 const customtBrk = document.getElementById('custom-aloo');
@@ -172,9 +173,9 @@ if(!isNaN(min) && !isNaN(sec) && !isNaN(hrs) && hrs>=0 && min>=0 && sec >=0){
     startBtn.textContent = 'Start';//resets 'pause' button to 'start'
 
     updateDisplay();//update the timer
-    customHrs.value = '';//input box
-    customMin.value = '';//input box
-    customSec.value = '';//input box
+    customHrs.value = '';//reset input box
+    customMin.value = '';// reset input box
+    customSec.value = '';// reset input box
     modalOverlay.classList.add('hidden');
 
     }
@@ -182,6 +183,6 @@ if(!isNaN(min) && !isNaN(sec) && !isNaN(hrs) && hrs>=0 && min>=0 && sec >=0){
     alert("Please Enter Valid Time");
 }
 });//func ends
-
-
-
+// ==============================================================
+// theme
+// ==============================================================
