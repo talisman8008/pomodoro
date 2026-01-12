@@ -22,9 +22,7 @@ const modes = {
 
     }
 };
-// TOP OF YOUR SCRIPT
-const themeToggle = document.getElementById('theme-toggle');
-const themeMenu = document.getElementById('thememenu');
+
 const timerDisplay = document.getElementById('timer');
 const resetBtn = document.getElementById('reset');
 const startBtn = document.getElementById('start');
@@ -98,7 +96,6 @@ function modeSwitcher(typashii) {
 
     timeLeft = selectedmode.time;
     // document.body.style.backgroundColor = selectedmode.color;
-    document.body.style.backgroundImage=`linear-gradient(rgba(0, 0, 0, 12%), rgba(0, 0, 0, 12%)), ${selectedmode.bg}`;
 
     updateDisplay();
 }
@@ -185,18 +182,14 @@ if(!isNaN(min) && !isNaN(sec) && !isNaN(hrs) && hrs>=0 && min>=0 && sec >=0){
     alert("Please Enter Valid Time");
 }
 });//func ends
-// ==============================================================
-// theme
-// ==============================================================
+// ==================================================================================
+//                                 THEME
+// ==================================================================================
 
-// ======================================================
-// THEME DATA & STATE
-// ======================================================
+const themeToggle = document.getElementById('theme-toggle');
+const themeMenu = document.getElementById('thememenu');
 
-// ======================================================
-// THEME DATA & STATE
-// ======================================================
-
+// 2. THEME TYPES
 const themes = {
     dark: { name: 'Dark/Minimal' },
     cyberpunk: { name: 'Cyberpunk' },
@@ -204,51 +197,58 @@ const themes = {
     cream: { name: 'Vintage Cream' }
 };
 
+// 3. GET SAVED THEME
 let currentTheme = localStorage.getItem('savedTheme') || 'dark';
 
-// ======================================================
-// THEME FUNCTIONS
-// ======================================================
+// 4. THEME FUNCTIONS
 
 function applyTheme(themeKey) {
-    // 1. Update the 'data-theme' attribute on the body
+    if (!themes[themeKey]) themeKey = 'dark';
     document.body.setAttribute('data-theme', themeKey);
 
-    // 2. Update the background image logic
-    // We must refresh this so the new --bg-overlay from CSS is applied
-    const selectedMode = modes[activesession]; // Uses your existing modes object
-    document.body.style.backgroundImage = `linear-gradient(var(--bg-overlay), var(--bg-overlay)), ${selectedMode.bg}`;
+    // Get the current background from the active session
+    const selectedMode = modes[activesession];
 
-    // 3. Save to memory
+    const bgUrl = selectedMode ? selectedMode.bg : modes.WORK.bg;
+
     currentTheme = themeKey;
     localStorage.setItem('savedTheme', themeKey);
 }
 
-// ======================================================
-// EVENT LISTENERS
-// ======================================================
-
-// Toggle Popup visibility when "Change Theme" is clicked
-themeToggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevents the 'window' click from closing it instantly
-    themeMenu.classList.toggle('hidden');
+// 2. Initialize everything properly at the VERY BOTTOM of your script
+window.addEventListener('DOMContentLoaded', () => {
+    // This ensures the DOM is fully loaded before we run logic
+    applyTheme(currentTheme);
+    updateDisplay();
+    // Set the initial active button state
+    activityTracker('work-mode');
 });
 
-// Close menu when clicking anywhere else on the screen (UX Polish)
+// 5. EVENT LISTENERS
+
+// Open/Close the menu
+if (themeToggle && themeMenu) {
+    themeToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themeMenu.classList.toggle('hidden');
+    });
+}
+
+// Close menu when clicking outside
 window.addEventListener('click', () => {
     if (themeMenu) themeMenu.classList.add('hidden');
 });
 
-
-
-// Handle clicking specific theme options in your popup
+// Handle picking a theme
 document.querySelectorAll('.theme-opt').forEach(opt => {
-    opt.addEventListener('click', () => {
+    opt.addEventListener('click', (e) => {
+        e.stopPropagation(); // Stop window listener from fighting this
         const themeId = opt.getAttribute('data-t');
         applyTheme(themeId);
-        themeMenu.classList.add('hidden'); // Close popup after selection
+        themeMenu.classList.add('hidden');
     });
 });
 
-// INITIALIZE ON LOAD
+// 6. INITIALIZE ON LOAD
+// Wrap this in a check to ensure 'modes' and 'activesession' are ready
 applyTheme(currentTheme);
