@@ -12,8 +12,39 @@
   --text-dim: rgba(255, 255, 255, 0.6);
   --glass-bg: rgba(255, 255, 255, 0.25);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --fillcolor: rgba(220, 220, 220, 0.53)
+  --fillcolor: rgba(220, 220, 220, 0.53);
+
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+  --font-main: 'Inter', sans-serif;
 }
+
+/* Default Styles */
+
+body[data-theme="cyberpunk"] {
+  --bg-overlay: rgba(20, 0, 40, 0.75);
+  --text-main: #00ffcc;
+  --accent-color: #ff00ff;
+  --font-main: 'Orbitron', sans-serif;
+  --fillcolor:#140028BF;
+  --glass-border:#140028BF ;
+  background-color: red;
+  background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../img/cyberpunk.jpg');
+}
+
+body[data-theme="forest"] {
+  --bg-overlay: rgba(10, 30, 10, 0.8);
+  --text-main: #e0f2e1;
+  --accent-color: #81c784;
+  --font-main: 'Merriweather', serif;
+}
+
+body[data-theme="cream"] {
+  --bg-overlay: rgba(255, 253, 240, 0.6);
+  --text-main: #4a4a4a;
+  --accent-color: #d4a373;
+  --font-main: 'Quicksand', sans-serif;
+}
+
 
 body, html {
   height: 100vh;
@@ -24,13 +55,15 @@ body, html {
   overflow: hidden; /* Prevents scrolling */
 }
 body{
-  background-image: linear-gradient(rgba(0, 0, 0, 12%), rgba(0, 0, 0, 12%)), url('C:/Users/Devesh/CLionProjects/Pomodorov1/img/default.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  transition: background-image 2s ease-in-out;
   overflow: hidden;
+  background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../img/work.jpg');
+  color: var(--text-main);
+  font-family: var(--font-main);
+  transition: background-image 1s ease, color 0.5s ease;
 }
 /* =========================================
     Main-layout
@@ -278,7 +311,10 @@ input::-webkit-inner-spin-button {
 
 .theme-options {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  max-height: 250px;
+  max-width: 250px;
   margin-top: 10px;
 }
 
@@ -296,7 +332,20 @@ input::-webkit-inner-spin-button {
   border-color: var(--text-main);
 }
 
+.theme-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin: 5px;
+}
 
+.theme-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-main);
+}
 
 .footer-right {
   position: relative; /* Anchor for the absolute popup */
