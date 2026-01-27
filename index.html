@@ -5,6 +5,19 @@
   <title>Aesthetic Pomodoro</title>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Merriweather&family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Potta+One&family=Ribeye&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Potta+One&family=Ribeye&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -20,7 +33,16 @@
 
 
   <footer class="bottom-settings">
-    <div class="footer-left"></div>
+    <div class="footer-left">
+      <div class="auto-flow-container">
+        <label class="switch">
+          <input type="checkbox" id="auto-flow">
+          <span class="slider round"></span>
+        </label>
+        <span class="auto-flow-label">Auto-Flow</span>
+      </div>
+
+    </div>
     <div class="mode-buttons">
     <button id="work-mode" class="active">Focus</button>
     <button id="short-break" >Short</button>
@@ -33,15 +55,15 @@
         <p style="margin-bottom: 10px; font-size: 0.9rem; opacity: 0.8;">Select Vibe</p>
         <div class="theme-options">
           <div class="theme-item">
-            <button class="theme-opt" data-t="dark" style="background: #0a0a0a;"></button>
+            <button class="theme-opt" data-t="space" style="background: #0a0a0a;"></button>
             <span class="theme-label">Dark</span>
           </div>
           <div class="theme-item">
-            <button class="theme-opt" data-t="cyberpunk" style="background: #2b0057;"></button>
+            <button class="theme-opt" data-t="cyberpunk" style="background: linear-gradient(to right, #0099F7 0%, #F11712  51%, #0099F7  100%)"></button>
             <span class="theme-label">Cyber</span>
           </div>
           <div class="theme-item">
-            <button class="theme-opt" data-t="forest" style="background: #1b3022;"></button>
+            <button class="theme-opt" data-t="forestZen" style="background: #2e502e;"></button>
             <span class="theme-label">Forest</span>
           </div>
           <div class="theme-item">
@@ -50,13 +72,8 @@
           </div>
 
           <div class="theme-item">
-            <button class="theme-opt" data-t="test2" style="background: #fdf5e6;"></button>
-            <span class="theme-label">Cream</span>
-          </div>
-
-          <div class="theme-item">
-            <button class="theme-opt" data-t="test3" style="background: #fdf5e6;"></button>
-            <span class="theme-label">Cream</span>
+            <button class="theme-opt" data-t="nordic" style="background: 	#697d97;"></button>
+            <span class="theme-label">Nordic</span>
           </div>
 
         </div>

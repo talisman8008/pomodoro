@@ -3,22 +3,22 @@ let timerId = null;
 let activesession ='WORK';
 const modes = {
     WORK: {
-        time: 2*60*60,
-       color: "#2C3E50", // Sleek dark blue
+        time: 25*60,
+       color: "#2C3E50",
        // sound: "work-end.mp3"
-        bg: 'url("img/work.jpg")'
+
     },
     SHORT: {
         time: 5 * 60,
-      color: "#27AE60", // Calm green
+        color: "#27AE60",
         //sound: "break-end.mp3"
-        bg: 'url("img/break.jpg")'
+
     },
     LONG: {
         time: 15 * 60,
-        color: "#2980B9", // Deep blue
+        color: "#2980B9",
         //sound: "long-break-end.mp3"
-        bg: 'url("img/long-break.jpg")'
+
 
     }
 };
@@ -27,6 +27,7 @@ const timerDisplay = document.getElementById('timer');
 const resetBtn = document.getElementById('reset');
 const startBtn = document.getElementById('start');
 
+const autoFlowToggle = document.getElementById('auto-flow');
 
 const alarm =document.getElementById('alarm');
 
@@ -50,22 +51,38 @@ function updateDisplay() {
 //===============================================================================
 startBtn.addEventListener('click', () => {
     if (timerId === null) {
-        startBtn.textContent='pause'
+        // 1. Logic to START the timer
+        startBtn.textContent = 'Pause';
         timerId = setInterval(() => {
             timeLeft--;
             updateDisplay();
+
+            // 2. Logic for when TIME RUNS OUT
             if (timeLeft <= 0) {
                 clearInterval(timerId);
-
+                timerId = null;
+                startBtn.textContent = 'Start';
                 alarm.play();
-                alert("Time is up! Take a break.");
+
+                if (autoFlowToggle && autoFlowToggle.checked) {
+                    if (activesession === 'WORK') {
+                        modeSwitcher('SHORT');
+                        activityTracker('short-break');
+                    } else {
+                        modeSwitcher('WORK');
+                        activityTracker('work-mode');
+                    }
+                    setTimeout(() => startBtn.click(), 2000);
+                } else {
+                    alert("Time is up! Take a break.");
+                }
             }
         }, 1000);
-    }
-     else {
-         clearInterval(timerId);
-        timerId=null;
-         startBtn.textContent='start'
+    } else {
+        // 3. Logic to PAUSE the timer
+        clearInterval(timerId);
+        timerId = null;
+        startBtn.textContent = 'Start';
     }
 });
 //===============================================================================
@@ -191,10 +208,11 @@ const themeMenu = document.getElementById('thememenu');
 
 // 2. THEME TYPES
 const themes = {
-    dark: { name: 'Dark/Minimal' },
+    space: { name: 'Dark/Minimal' },
     cyberpunk: { name: 'Cyberpunk' },
-    forest: { name: 'Forest Zen' },
-    cream: { name: 'Vintage Cream' }
+    forestZen: { name: 'Forest Zen' },
+    cream: { name: 'Vintage Cream' },
+    nordic: { name: 'nordic' }
 };
 
 // 3. GET SAVED THEME

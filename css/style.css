@@ -13,45 +13,68 @@
   --glass-bg: rgba(255, 255, 255, 0.25);
   --glass-border: rgba(255, 255, 255, 0.1);
   --fillcolor: rgba(220, 220, 220, 0.53);
-
-  --bg-overlay: rgba(0, 0, 0, 0.7);
+  --text-active:white;
+  --bg-overlay: rgba(15, 23, 42, 0.8);
   --font-main: 'Inter', sans-serif;
+  --text-blur:rgba(225, 225, 225, 0.3);
+
 }
 
 /* Default Styles */
+body[data-theme="space"] {
+  --bg-overlay: rgba(2, 5, 11, 0.45);
+  --text-main: #c3cccc;
+  --accent-color: #38bdf8;
+  --font-main: 'Inter', sans-serif;
+  --fillcolor: rgba(30, 41, 59, 0.7);
+  --glass-border: #393c5a;
+  --text-active: #cccaca;
+  background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../img/space1.jpg');
+}
 
 body[data-theme="cyberpunk"] {
   --bg-overlay: rgba(20, 0, 40, 0.75);
   --text-main: #00ffcc;
-  --accent-color: #ff00ff;
+  --accent-color: rgba(78, 70, 78, 0.74);
   --font-main: 'Orbitron', sans-serif;
-  --fillcolor:#140028BF;
-  --glass-border:#140028BF ;
-  background-color: red;
+  --fillcolor: rgba(0, 255, 204, 0.27);
+  --glass-border: #00ffcc;
+  --text-active: white;
   background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../img/cyberpunk.jpg');
 }
 
-body[data-theme="forest"] {
-  --bg-overlay: rgba(10, 30, 10, 0.8);
-  --text-main: #e0f2e1;
-  --accent-color: #81c784;
+body[data-theme="nordic"] {
+  --bg-overlay: rgb(55 55 55 / 45%);
+  --text-main: #e4e4e4;
+  --accent-color: #857885;
+  --font-main: "Oswald", serif; /*ribeye google font*/
+  --fillcolor: rgba(66, 66, 66, 0.27);
+  --glass-border: #acacac;
+  --text-active: white !important;
+  --text-blur: rgba(225, 225 ,225 , 0.30);
+    background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../img/nordic.jpg');
+}
+
+body[data-theme="forestZen"] {
+  --bg-overlay: rgba(26, 35, 26, 0.64);
+  --text-main: #f0f4f0;
+  --accent-color: #a3b18a;
   --font-main: 'Merriweather', serif;
-}
+  --fillcolor: rgba(38, 92, 40, 0.35);
+  --glass-border: #acacac;
+  --text-active: white !important;
+  --text-blur: rgba(225, 225 ,225 , 0.30);
+  background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../img/forest.jpg');
 
-body[data-theme="cream"] {
-  --bg-overlay: rgba(255, 253, 240, 0.6);
-  --text-main: #4a4a4a;
-  --accent-color: #d4a373;
-  --font-main: 'Quicksand', sans-serif;
-}
 
+}
 
 body, html {
   height: 100vh;
   width: 100vw;
   background-color: var(--bg-dark);
   color: var(--text-main);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-main), sans-serif;
   overflow: hidden; /* Prevents scrolling */
 }
 body{
@@ -62,7 +85,7 @@ body{
   overflow: hidden;
   background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../img/work.jpg');
   color: var(--text-main);
-  font-family: var(--font-main);
+  font-family: var(--font-main), serif ;
   transition: background-image 1s ease, color 0.5s ease;
 }
 /* =========================================
@@ -88,10 +111,10 @@ body{
 
 #timer {
   font-size: 8rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -2px;
   font-variant-numeric: tabular-nums; /* Prevents numbers from jumping */
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+  text-shadow: 0 0 20px var(--text-blur);
 }
 
 /* Start/Reset Buttons in the middle */
@@ -101,9 +124,10 @@ body{
 }
 
 .main-controls button {
+  font-family: var(--font-main);
   padding: 1rem 2.5rem;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 400;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -126,12 +150,7 @@ body{
 /* =========================================
     (FOOTER)
    ========================================= */
-/*.bottom-settings {*/
-/*  padding: 2rem 3rem;*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center;*/
-/*}*/
+
 
 .bottom-settings {
   display: flex;
@@ -159,11 +178,12 @@ body{
 
 .mode-buttons {
   display: flex;
-  border: rgba(255, 255, 255, 0.14) solid 1px;
+  border: var(--glass-border) solid 1px;
   /*box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;*/
   border-radius: 20px;
   padding: 5px;
   gap: 1rem;
+
 }
 
 
@@ -180,10 +200,12 @@ body{
   border: none;
   color: var(--text-dim);
   font-weight: 500;
+  font-family: var(--font-main);
   cursor: pointer;
   padding: 0.80rem 1rem;
   transition: all 0.4s ease;
   font-size: 1.25rem;
+
 }
 
 .active{
@@ -191,6 +213,7 @@ body{
   border-radius: 20px;
   border: rgba(255, 255, 255, 0.37) solid 1px !important;
   box-shadow: rgb(139 139 139 / 62%) 0px 0px 8px 0px;
+  color: var(--text-active) !important;
   /*transition: ease 0.5s;*/
 }
 
@@ -258,8 +281,6 @@ body{
   margin: 25px 0;
 }
 
-
-
 .modal-content input {
   width: 70px;
   height: 50px;
@@ -312,9 +333,10 @@ input::-webkit-inner-spin-button {
 .theme-options {
   display: flex;
   flex-wrap: wrap;
+  column-gap: 5px;
   justify-content: space-around;
-  max-height: 250px;
-  max-width: 250px;
+  max-height: 200px;
+  max-width: 262px;
   margin-top: 10px;
 }
 
@@ -353,7 +375,7 @@ input::-webkit-inner-spin-button {
 
 .theme-popup {
   position: absolute;
-  bottom: 80px; /* Position it above the footer */
+  bottom: 80px;
   right: 0;
   background: var(--glass-bg, rgba(0,0,0,0.8));
   backdrop-filter: blur(10px);
@@ -364,7 +386,7 @@ input::-webkit-inner-spin-button {
   z-index: 1000;
 }
 
-/* The "Ghost Element" arrow pointing down to the button */
+/* The  arrow pointing down to the button */
 .theme-popup::after {
   content: "";
   position: absolute;
@@ -373,4 +395,61 @@ input::-webkit-inner-spin-button {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid rgba(255,255,255,0.1);
+}
+
+
+
+.auto-flow-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auto-flow-label {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+/*  the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+/* Hides default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255,255,255,0.1);
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; width: 16px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
 }
