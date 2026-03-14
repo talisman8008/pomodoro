@@ -5,21 +5,14 @@ const modes = {
     WORK: {
         time: 25*60,
        color: "#2C3E50",
-       // sound: "work-end.mp3"
-
     },
     SHORT: {
         time: 5 * 60,
         color: "#27AE60",
-        //sound: "break-end.mp3"
-
     },
     LONG: {
         time: 15 * 60,
         color: "#2980B9",
-        //sound: "long-break-end.mp3"
-
-
     }
 };
 
@@ -30,11 +23,9 @@ const startBtn = document.getElementById('start');
 const autoFlowToggle = document.getElementById('auto-flow');
 
 const alarm =document.getElementById('alarm');
-
 //===============================================================================
                                 //Clock Logic
 //===============================================================================
-
 function updateDisplay() {
     const hours = Math.floor(timeLeft / 3600);
     const minutes = Math.floor((timeLeft % 3600) / 60);
@@ -98,11 +89,9 @@ resetBtn.addEventListener('click',() => {
     updateDisplay();
      startBtn.textContent='Start';
  });
-
 //===============================================================================
                             //Different Modes Logic
 //===============================================================================
-
 function modeSwitcher(typashii) {
     activesession=typashii;
     const selectedmode=modes[typashii];
@@ -136,9 +125,7 @@ Focusbtn.addEventListener('click', () => {
     console.log("Short Session started");
     activityTracker('work-mode');
 });
-
 customtBrk.addEventListener('click',()=>activityTracker('custom-aloo'));
-
 // ======================================================
 // Active session
 // ======================================================
@@ -146,7 +133,6 @@ function activityTracker(sessionmode) {
     const allbtns=document.querySelectorAll('.mode-buttons button');
 
     allbtns.forEach(btn=>{btn.classList.remove('active');});
-
     const activebtn= document.getElementById(sessionmode);
     activebtn.classList.add('active');
 }
@@ -154,8 +140,7 @@ function activityTracker(sessionmode) {
 //===============================================================================
                             //Custom-Timer Button
 //===============================================================================
-
-// Grab Modal Elements
+// Modal variables
 const modalOverlay = document.getElementById('modal-overlay');
 const closeModalBtn = document.getElementById('close-modal');
 const setCustomBtn = document.getElementById('set-custom');
@@ -167,11 +152,8 @@ const customHrs = document.getElementById('custom-hours');
 customtBrk.addEventListener('click',() =>{
     console.log("Custom button clicked!");
     modalOverlay.classList.remove('hidden');});
-
 // closing modal
 closeModalBtn.addEventListener('click',()=>{modalOverlay.classList.add('hidden');});
-
-
 // setting custom time button
 setCustomBtn.addEventListener('click',() => {
 
@@ -179,21 +161,20 @@ const min = parseInt(customMin.value) ||0;
 const sec = parseInt(customSec.value)||0;
 const hrs = parseInt(customHrs.value)||0;
 
-
 if(!isNaN(min) && !isNaN(sec) && !isNaN(hrs) && hrs>=0 && min>=0 && sec >=0){
 
-    timeLeft=(hrs*3600)+(min*60)+sec; //update time left in seconds
+    timeLeft=(hrs*3600)+(min*60)+sec; //update time(seconds) left in
     if (timeLeft>0){
     clearInterval(timerId);//stop any ongoing process
     timerId=null;//resets the timer
     startBtn.textContent = 'Start';//resets 'pause' button to 'start'
 
     updateDisplay();//update the timer
-    customHrs.value = '';//reset input box
-    customMin.value = '';// reset input box
-    customSec.value = '';// reset input box
+      //reseting the value
+    customHrs.value = '';
+    customMin.value = '';
+    customSec.value = '';
     modalOverlay.classList.add('hidden');
-
     }
 }else {
     alert("Please Enter Valid Time");

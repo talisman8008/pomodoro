@@ -1,114 +1,145 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Aesthetic Pomodoro</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Merriweather&family=Quicksand&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pomodoro | V2</title>
+<!--fonts-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Potta+One&family=Ribeye&display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Potta+One&family=Ribeye&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!--  icons-->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<!--style-->
+  <link rel="stylesheet" href="css/style2.css">
 
 </head>
-<body>
+<body data-theme="dark">
+
+<div class="app-background"></div>
+<div class="app-overlay"></div>
 
 
-<div class="main-layout">
-  <div class="timer-display-container">
-    <h1 id="timer">00:25:00</h1>
-    <div class="main-controls">
-      <button id="start">Start</button>
-      <button id="reset">Reset</button>
+<main class="dashboard">
+  <!-- Top Header -->
+  <header class="app-header">
+    <div class="logo">
+      <span>Pomodoro</span>
     </div>
-  </div>
 
-
-  <footer class="bottom-settings">
-    <div class="footer-left">
-      <div class="auto-flow-container">
-        <label class="switch">
+    <div class="header-controls">
+      <div class="auto-flow-wrapper">
+        <span class="label">Auto-Flow</span>
+        <label class="toggle">
           <input type="checkbox" id="auto-flow">
-          <span class="slider round"></span>
+          <span class="slider"></span>
         </label>
-        <span class="auto-flow-label">Auto-Flow</span>
       </div>
 
-    </div>
-    <div class="mode-buttons">
-    <button id="work-mode" class="active">Focus</button>
-    <button id="short-break" >Short</button>
-    <button id="long-break" >Long</button>
-    <button id="custom-aloo" >Customize</button>
-  </div>
-
-    <div class="footer-right">
-      <div id="thememenu" class="theme-popup hidden">
-        <p style="margin-bottom: 10px; font-size: 0.9rem; opacity: 0.8;">Select Vibe</p>
-        <div class="theme-options">
-          <div class="theme-item">
-            <button class="theme-opt" data-t="space" style="background: #0a0a0a;"></button>
-            <span class="theme-label">Dark</span>
-          </div>
-          <div class="theme-item">
-            <button class="theme-opt" data-t="cyberpunk" style="background: linear-gradient(to right, #0099F7 0%, #F11712  51%, #0099F7  100%)"></button>
-            <span class="theme-label">Cyber</span>
-          </div>
-          <div class="theme-item">
-            <button class="theme-opt" data-t="forestZen" style="background: #2e502e;"></button>
-            <span class="theme-label">Forest</span>
-          </div>
-          <div class="theme-item">
-            <button class="theme-opt" data-t="cream" style="background: #fdf5e6;"></button>
-            <span class="theme-label">Cream</span>
-          </div>
-
-          <div class="theme-item">
-            <button class="theme-opt" data-t="nordic" style="background: 	#697d97;"></button>
-            <span class="theme-label">Nordic</span>
-          </div>
-
+      <div class="theme-selector">
+        <button id="theme-btn" class="icon-btn" title="Change Theme">
+          <ion-icon name="color-palette-outline"></ion-icon>
+        </button>
+        <div id="theme-dropdown" class="dropdown hidden">
+          <div class="dropdown-header">Select Vibe</div>
+          <button class="theme-option" data-t="dark">
+            <span class="color-dot" style="background:#0a0a0a; border: 1px solid #333;"></span> Dark Minimal
+          </button>
+          <button class="theme-option" data-t="cyberpunk">
+            <span class="color-dot" style="background:linear-gradient(45deg, #00ffcc, #ff00ff);"></span> Cyberpunk
+          </button>
+          <button class="theme-option" data-t="forestZen">
+            <span class="color-dot" style="background:#2e502e;"></span> Forest Zen
+          </button>
+          <button class="theme-option" data-t="vintage">
+            <span class="color-dot" style="background:#d4b483;"></span> Vintage
+          </button>
+          <button class="theme-option" data-t="nordic">
+            <span class="color-dot" style="background:#697d97;"></span> Nordic
+          </button>
+          <button class="theme-option" data-t="lavender">
+            <span class="color-dot" style="background:#c084fc;"></span> Lavender
+          </button>
         </div>
       </div>
+    </div>
+  </header>
 
-      <button id="theme-toggle"  type="button">Change Theme</button>
-    </div>
-  </footer>
-</div>
+  <!-- Timer Center Area -->
+  <section class="timer-section">
 
-<!--==============================================-->
-<!--modal dialog box -->
-<!--==============================================-->
-<div id="modal-overlay" class="hidden">
-  <div class="modal-content">
-    <h3>Custom Session</h3>
-    <p>How many minutes would you like to focus?</p>
-    <div class="input-container">
-    <input type="number" id="custom-hours" placeholder="HH" min="0">
-    <input type="number" id="custom-minutes" placeholder="MM" min="0" max="59" >
-    <input type="number" id="custom-seconds" placeholder="SS" min="0" max="59">
+    <div class="timer-circle-container">
+      <!-- SVG Progress Ring -->
+      <svg class="progress-ring" viewBox="0 0 400 400">
+        <circle class="ring-track" cx="200" cy="200" r="180"></circle>
+        <circle class="ring-progress" id="progress-circle" cx="200" cy="200" r="180"></circle>
+      </svg>
+
+      <div class="timer-display">
+        <div class="time-label" id="timer-state-label">STAY FOCUSED</div>
+        <h1 id="timer">00:25:00</h1>
+        <div class="session-info">Session <span id="session-count">1</span>/4</div>
+      </div>
     </div>
-    <div class="modal-buttons">
-      <button id="set-custom" type="button">Set Time</button>
-      <button id="close-modal" type="button">Cancel</button>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="reset" class="control-btn outline" title="Reset Timer">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </button>
+
+      <button id="start" class="control-btn primary play-btn">
+        <ion-icon name="play" id="play-icon"></ion-icon>
+      </button>
+
+      <button id="skip" class="control-btn outline" title="Skip Session">
+        <ion-icon name="play-skip-forward-outline"></ion-icon>
+      </button>
     </div>
+    <!-- Modes -->
+    <div class="modes-pill">
+      <button id="work-mode" class="mode-btn active">Focus</button>
+      <button id="short-break" class="mode-btn">Short Break</button>
+      <button id="long-break" class="mode-btn">Long Break</button>
+      <button id="custom-aloo" class="mode-btn">Custom</button>
+    </div>
+
+  </section>
+</main>
+
+<!--overlaymodal-->
+<div id="modal-overlay" class="modal-backdrop hidden">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Custom Block</h3>
+      <button id="close-modal" class="icon-btn close-btn"><ion-icon name="close-outline"></ion-icon></button>
+    </div>
+    <p class="modal-subtext">Design your perfect focus session.</p>
+
+    <div class="time-inputs">
+      <div class="input-group">
+        <input type="number" id="custom-hours" placeholder="00" min="0" max="23">
+        <label>HRS</label>
+      </div>
+      <span class="colon">:</span>
+      <div class="input-group">
+        <input type="number" id="custom-minutes" placeholder="25" min="0" max="59">
+        <label>MIN</label>
+      </div>
+      <span class="colon">:</span>
+      <div class="input-group">
+        <input type="number" id="custom-seconds" placeholder="00" min="0" max="59">
+        <label>SEC</label>
+      </div>
+    </div>
+    <button id="set-custom" class="modal-primary-btn">Begin Session</button>
   </div>
 </div>
-
 
 <audio id="alarm">
   <source src="audio/alarm_cukdukuu.wav" type="audio/mpeg">
 </audio>
-
-
-<script src="js/script.js"></script>
+<script src="js/js.js"></script>
 </body>
 </html>
